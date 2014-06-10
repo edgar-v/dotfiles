@@ -46,10 +46,6 @@ alias gl++="g++ -lGL -lGLU -lglut -lGLEW"
 
 export EDITOR=vim
 
-export WORKON_HOME=~/.virtualenvs
-VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-source /usr/bin/virtualenvwrapper.sh
-
 eval `ssh-agent -s` > /dev/null
 
 export PATH
