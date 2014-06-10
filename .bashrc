@@ -44,6 +44,12 @@ alias l='ls -lha'
 # OpenGL compilation
 alias gl++="g++ -lGL -lGLU -lglut -lGLEW" 
 
+# Git aliases
+alias gits='git status'
+alias gitc='git commit'
+alias gita='git add'
+alias gitd='git diff'
+
 export EDITOR=vim
 
 eval `ssh-agent -s` > /dev/null
