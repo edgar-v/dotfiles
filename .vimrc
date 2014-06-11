@@ -5,6 +5,12 @@ syntax on
 filetype on
 filetype plugin indent on
 set number
+set incsearch
+set hlsearch
+set cursorline
+set wildmenu
+set lazyredraw
+set showmatch
 
 " Key remaps
 
@@ -13,8 +19,13 @@ nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
+nnoremap j gj
+nnoremap k gk
+nnoremap <leader>e $
+nnoremap <leader>b ^
 map <leader>td <Plug>TaskList
 map <leader>g :GundoToggle<CR>
+nnoremap <leader><space> :nohlsearch<CR>
 
 " Folding
 set foldmethod=indent
