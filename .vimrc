@@ -11,6 +11,7 @@ set cursorline
 set wildmenu
 set lazyredraw
 set showmatch
+set ignorecase
 
 " Key remaps
 
@@ -38,3 +39,14 @@ let g:pep8_map='<leader>8'
 au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
+
+
+" Pyflakes
+highlight SpellBad term=reverse ctermbg=1
+
+" NERDTree
+map <leader>n :NERDTreeToggle<CR>
+
+
+nnoremap <Tab> :MBEbn<CR>
+nnoremap <S-Tab> :MBEbp<CR>
