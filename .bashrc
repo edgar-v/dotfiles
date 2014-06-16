@@ -15,11 +15,6 @@ export HISTIGNORE="ls:l:l -rt:cd:logout:exit:echo:"
 # Oppdater størrelsen på vinduet når vi resizer
 shopt -s checkwinsize
 
-function parse_git_branch {
-    ref=$(git-symbolic-ref HEAD 2> /dev/null) || return
-    echo "("${ref#refs/heads/}")"
-}
-
 # Give colorized prompt
 function color_my_prompt {
     local __user_and_host="\[\033[0;32m\]\u\[\033[00m\]@\[\033[36m\]\h"
@@ -65,6 +60,7 @@ alias gits='git status'
 alias gitc='git commit'
 alias gita='git add'
 alias gitd='git diff'
+alias gitp='git push'
 
 export EDITOR=vim
 
