@@ -15,9 +15,25 @@ export HISTIGNORE="ls:l:l -rt:cd:logout:exit:echo:"
 # Oppdater størrelsen på vinduet når vi resizer
 shopt -s checkwinsize
 
+function parse_git_branch {
+    ref=$(git-symbolic-ref HEAD 2> /dev/null) || return
+    echo "("${ref#refs/heads/}")"
+}
 
 # Give colorized prompt
-PS1='\[\a\]${debian_chroot:+($debian_chroot)}\[\033[0;32m\]\u\[\033[00m\]@\[\033[36m\]\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ '
+function color_my_prompt {
+    local __user_and_host="\[\033[0;32m\]\u\[\033[00m\]@\[\033[36m\]\h"
+    local __cur_location="\[\033[01;36m\]\w"
+    local __git_branch_color="\[\033[31m\]"
+    local __git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
+    local __prompt_tail="\[\033[35m\]$"
+    local __last_color="\[\033[00m\]"
+    export PS1="$__user_and_host $__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color "
+}
+
+color_my_prompt
+
+#PS1='\[\033[0;32m\]\u\[\033[00m\]@\[\033[36m\]\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[31m\]`git branch[\033[00m\]\$ '
 
 case "$TERM" in
 screen*)
