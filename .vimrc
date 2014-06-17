@@ -1,8 +1,16 @@
 filetype off
 call pathogen#infect()
 call pathogen#helptags()
+
+set textwidth=79
+set shiftwidth=4
+set tabstop=4
+set expandtab
+set softtabstop=4
+set shiftround
+set autoindent
+
 syntax on
-filetype on
 filetype plugin indent on
 set number
 set incsearch
@@ -20,6 +28,7 @@ nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
+nnoremap <leader>v <Plug>TaskList
 nnoremap j gj
 nnoremap k gk
 nnoremap <leader>e $
