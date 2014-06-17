@@ -62,6 +62,9 @@ alias gita='git add'
 alias gitd='git diff'
 alias gitp='git push'
 
+# ssh aliases
+alias sshp='ssh pikachu.dhcp.samfundet.no'
+
 export EDITOR=vim
 
 eval `ssh-agent -s` > /dev/null
