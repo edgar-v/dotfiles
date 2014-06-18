@@ -33,23 +33,6 @@ color_my_prompt
 
 #PS1='\[\033[0;32m\]\u\[\033[00m\]@\[\033[36m\]\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[31m\]`git branch[\033[00m\]\$ '
 
-case "$TERM" in
-screen*)
-    # Setter tittle for xterm/kompatible, og kjørende kommando for screen, Pass på å putte denne i .screenrc: shelltitle '$ |'
-    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007\033k\033\\"'
-    eval "`dircolors -b`"
-    alias ls='ls --color=auto -F'
-    ;;
-xterm*|rxvt*)
-    # Setter tittel i xterm/kompatible
-    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
-    eval "`dircolors -b`"
-    alias ls='ls --color=auto -F'
-    ;;
-*)
-    ;;
-esac
-
 # ls aliases
 alias ll='ls -CA'
 alias la='ls -a'

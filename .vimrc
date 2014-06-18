@@ -2,6 +2,9 @@ filetype off
 call pathogen#infect()
 call pathogen#helptags()
 
+set t_Co=256
+colorscheme kolor
+
 set shiftwidth=4
 set tabstop=4
 set expandtab
