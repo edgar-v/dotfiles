@@ -12,6 +12,9 @@ export HISTCONTROL=ignoreboth
 export HISTFILESIZE=9999
 export HISTIGNORE="ls:l:l -rt:cd:logout:exit:echo:"
 
+
+export LD_LIBRARY_PATH=/usr/local/lib
+
 # Oppdater størrelsen på vinduet når vi resizer
 shopt -s checkwinsize
 
@@ -63,7 +66,7 @@ alias gitd='git diff'
 alias gitp='git push'
 
 # ssh aliases
-alias sshp='ssh pikachu.dhcp.samfundet.no'
+alias sshp='ssh pikachu.samfundet.no'
 
 export EDITOR=vim
 
