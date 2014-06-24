@@ -31,8 +31,6 @@ function color_my_prompt {
 
 color_my_prompt
 
-#PS1='\[\033[0;32m\]\u\[\033[00m\]@\[\033[36m\]\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[31m\]`git branch[\033[00m\]\$ '
-
 # ls aliases
 alias ls='ls --color=auto -F'
 alias ll='ls -CA'
@@ -51,6 +49,7 @@ alias gitp='git push'
 
 # ssh aliases
 alias sshp='ssh pikachu.samfundet.no'
+alias sshl='ssh login.samfundet.no'
 
 export EDITOR=vim
 
