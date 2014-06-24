@@ -43,9 +43,6 @@
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = https://github.com/vim-scripts/The-NERD-tree.git
-[submodule ".vim/bundle/ropevim"]
-	path = .vim/bundle/ropevim
-	url = https://github.com/klen/rope-vim.git
 [submodule "pyflakes-pathogen"]
 	path = pyflakes-pathogen
 	url = https://github.com/mitechie/pyflakes-pathogen.git
