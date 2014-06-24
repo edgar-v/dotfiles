@@ -47,12 +47,13 @@ alias gita='git add'
 alias gitd='git diff'
 alias gitp='git push'
 
+# Force tmux to use 256 colors
+alias tmux='tmux -2'
+
 # ssh aliases
 alias sshp='ssh pikachu.samfundet.no'
 alias sshl='ssh login.samfundet.no'
 
 export EDITOR=vim
-
-eval `ssh-agent -s` > /dev/null
 
 export PATH
