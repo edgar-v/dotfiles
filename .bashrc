@@ -57,6 +57,4 @@ alias sshp='ssh pikachu.samfundet.no'
 
 export EDITOR=vim
 
-eval `ssh-agent -s` > /dev/null
-
 export PATH
