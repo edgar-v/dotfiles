@@ -52,7 +52,7 @@ set completeopt=menuone,longest,preview
 
 
 " Pyflakes
-highlight SpellBad term=reverse ctermbg=1
+" highlight SpellBad term=reverse ctermbg=1
 
 " NERDTree
 map <leader>n :NERDTreeToggle<CR>
