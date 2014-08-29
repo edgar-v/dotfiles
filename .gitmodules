@@ -40,9 +40,10 @@
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = https://github.com/vim-scripts/The-NERD-tree.git
-[submodule "pyflakes-pathogen"]
-	path = pyflakes-pathogen
-	url = https://github.com/mitechie/pyflakes-pathogen.git
+    ignore = dirty
 [submodule ".vim/pyflakes-pathogen"]
 	path = .vim/pyflakes-pathogen
 	url = https://github.com/mitechie/pyflakes-pathogen.git
+[submodule ".vim/bundle/snipmate2"]
+	path = .vim/bundle/snipmate2
+	url = https://github.com/ervandew/snipmate.vim

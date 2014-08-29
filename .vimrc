@@ -48,11 +48,12 @@ let g:pep8_map='<leader>8'
 " Supertab
 au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabClosePreviewOnPopupClose = 1
 set completeopt=menuone,longest,preview
 
-
-" Pyflakes
-" highlight SpellBad term=reverse ctermbg=1
+" MBE
+let g:miniBufExplForceSyntaxEnable = 1
+let g:miniBufExplCheckDupeBufs = 0
 
 " NERDTree
 map <leader>n :NERDTreeToggle<CR>
@@ -60,3 +61,4 @@ map <leader>n :NERDTreeToggle<CR>
 
 nnoremap <Tab> :MBEbn<CR>
 nnoremap <S-Tab> :MBEbp<CR>
+

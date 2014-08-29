@@ -1,5 +1,5 @@
 URxvt.loginShell:true
-URxvt.termName:rxvt-unicode
+URxvt.termName:rxvt-unicode-256color
 URxvt.underlineColor: Yellow
 
 ! to match gnome-terminal "Linux console" scheme
@@ -35,10 +35,13 @@ URxvt.scrollBar:false
 URxvt.saveLines:32767
 URxvt.troughColor:#000000
 URxvt.scrollColor:#222222
+URxvt.externalBorder: 0
+URxvt.internalBorder: 2
+Urxvt.borderLess: false
 
 !! Font
-URxvt.font: xft:Monospace:pixelsize=13
-URxvt.boldFont: xft:Monospace:pixelsize=13
+URxvt.font: xft:Monospace:pixelsize=12
+URxvt.boldFont: xft:Monospace:pixelsize=12
 URxvt.letterspace: -4
 
 !! Perl extensions
