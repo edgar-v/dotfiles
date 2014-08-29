@@ -43,5 +43,5 @@ URxvt.letterspace: -4
 
 !! Perl extensions
 URxvt.perl-ext-common: default,matcher
-URxvt.url-launcher: firefox
+URxvt.url-launcher: chromium
 URxvt.matcher.button: C1
