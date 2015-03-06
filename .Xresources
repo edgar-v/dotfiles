@@ -40,8 +40,8 @@ URxvt.internalBorder: 2
 Urxvt.borderLess: false
 
 !! Font
-URxvt.font: xft:Monospace:pixelsize=12
-URxvt.boldFont: xft:Monospace:pixelsize=12
+URxvt.font: xft:Monospace:pixelsize=14
+URxvt.boldFont: xft:Monospace:pixelsize=14
 URxvt.letterspace: -4
 
 !! Perl extensions

@@ -6,6 +6,8 @@
 [[ $- != *i* ]] && return
 
 
+# Tab complete with sudo
+complete -cf sudo
 
 # Ingen duplikate linjer i historien
 export HISTCONTROL=ignoreboth
@@ -50,9 +52,6 @@ alias gitp='git push'
 # Force tmux to use 256 colors
 alias tmux='tmux -2'
 
-# ssh aliases
-alias sshp='ssh pikachu.samfundet.no'
-alias sshl='ssh login.samfundet.no'
 
 export EDITOR=vim
 
