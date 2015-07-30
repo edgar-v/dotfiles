@@ -3,7 +3,7 @@ call pathogen#infect()
 call pathogen#helptags()
 
 set t_Co=256
-colorscheme kolor
+colorscheme torte
 
 set shiftwidth=4
 set tabstop=4

@@ -6,16 +6,13 @@
 [[ $- != *i* ]] && return
 
 
-# Tab complete with sudo
-complete -cf sudo
-
 # Ingen duplikate linjer i historien
 export HISTCONTROL=ignoreboth
 export HISTFILESIZE=9999
 export HISTIGNORE="ls:l:l -rt:cd:logout:exit:echo:"
 
 
-export LD_LIBRARY_PATH=/usr/local/lib
+export LD_LIBRARY_PATH=/usr/local/lib64
 
 # Oppdater størrelsen på vinduet når vi resizer
 shopt -s checkwinsize
@@ -52,6 +49,7 @@ alias gitp='git push'
 # Force tmux to use 256 colors
 alias tmux='tmux -2'
 
+export PAGER='less -S -L'
 
 export EDITOR=vim
 
