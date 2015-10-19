@@ -6,16 +6,16 @@
 [[ $- != *i* ]] && return
 
 
-# Ingen duplikate linjer i historien
 export HISTCONTROL=ignoreboth
 export HISTFILESIZE=9999
 export HISTIGNORE="ls:l:l -rt:cd:logout:exit:echo:"
 
+export CDPATH="~/dev"
+
 
 export LD_LIBRARY_PATH=/usr/local/lib64
 
-# Oppdater størrelsen på vinduet når vi resizer
-shopt -s checkwinsize
+shopt -s checkwinsize autocd cdspell
 
 # Give colorized prompt
 function color_my_prompt {
@@ -46,11 +46,20 @@ alias gita='git add'
 alias gitd='git diff'
 alias gitp='git push'
 
+man() {
+    env LESS_TERMCAP_mb=$'\E[01;31m' \
+    LESS_TERMCAP_md=$'\E[01;38;5;38m' \
+    LESS_TERMCAP_me=$'\E[0m' \
+    LESS_TERMCAP_se=$'\E[0m' \
+    LESS_TERMCAP_so=$'\E[38;5;1m' \
+    LESS_TERMCAP_ue=$'\E[0m' \
+    LESS_TERMCAP_us=$'\E[04;38;5;15m' \
+    man "$@"
+}
+
 # Force tmux to use 256 colors
 alias tmux='tmux -2'
 
 export PAGER='less -S -L'
-
 export EDITOR=vim
-
 export PATH
