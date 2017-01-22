@@ -1,2 +1,2 @@
 #!/bin/sh
-feh  --image-bg black --bg-center '~/.fehbg/arch.png' 
+feh  --no-fehbg --image-bg black --bg-center $HOME/.fehbg/arch.png

@@ -40,9 +40,9 @@ URxvt.internalBorder: 2
 Urxvt.borderLess: false
 
 !! Font
-URxvt.font: xft:Monospace:pixelsize=14
-URxvt.boldFont: xft:Monospace:pixelsize=14
-URxvt.letterspace: -4
+URxvt.font: xft:Inconsolata:pixelsize=18:antialias=true
+URxvt.boldFont: xft:Inconsolata:pixelsize=18:antialias=true
+URxvt.letterSpace: 0
 
 !! Perl extensions
 URxvt.perl-ext-common: default,matcher

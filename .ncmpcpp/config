@@ -305,7 +305,7 @@ autocenter_mode = "yes"
 #
 #default_find_mode = "wrapped" (wrapped/normal)
 #
-#default_space_mode = "add" (add/select)
+default_space_mode = "add" (add/select)
 #
 #default_tag_editor_left_col = "albums" (albums/dirs)
 #
@@ -319,7 +319,7 @@ statusbar_visibility = "yes"
 #
 #header_text_scrolling = "yes"
 #
-fancy_scrolling = "yes"
+#fancy_scrolling = "yes"
 #
 #cyclic_scrolling = "no"
 #
@@ -345,7 +345,7 @@ follow_now_playing_lyrics = "yes"
 #
 #show_hidden_files_in_local_browser = "no"
 #
-display_screens_numbers_on_start = "yes"
+#display_screens_numbers_on_start = "yes"
 #
 ##
 ## How shall key_screen_switcher work?
@@ -417,7 +417,7 @@ ignore_leading_the = "yes"
 #
 #tag_editor_extended_numeration = "no"
 #
-media_library_display_date = "no"
+#media_library_display_date = "no"
 #
 #media_library_display_empty_tag = "yes"
 #

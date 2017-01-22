@@ -2,7 +2,6 @@ filetype off
 call pathogen#infect()
 call pathogen#helptags()
 
-set t_Co=256
 colorscheme torte
 
 set shiftwidth=4
@@ -21,6 +20,7 @@ set wildmenu
 set lazyredraw
 set showmatch
 set ignorecase
+let c_space_errors = 1
 
 " Key remaps
 
@@ -29,13 +29,10 @@ nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
-nnoremap <leader>v <Plug>TaskList
 nnoremap j gj
 nnoremap k gk
 nnoremap <leader>e $
 nnoremap <leader>b ^
-map <leader>td <Plug>TaskList
-map <leader>g :GundoToggle<CR>
 nnoremap <leader><space> :nohlsearch<CR>
 
 " Folding
@@ -54,6 +51,9 @@ set completeopt=menuone,longest,preview
 " MBE
 let g:miniBufExplForceSyntaxEnable = 1
 let g:miniBufExplCheckDupeBufs = 0
+let g:miniBufExplShowBufNumbers = 0
+nnoremap <Tab> :MBEbn<CR>
+nnoremap <S-Tab> :MBEbp<CR>
 
 " NERDTree
 map <leader>n :NERDTreeToggle<CR>
@@ -62,3 +62,4 @@ map <leader>n :NERDTreeToggle<CR>
 nnoremap <Tab> :MBEbn<CR>
 nnoremap <S-Tab> :MBEbp<CR>
 
+autocmd BufNewFile,BufRead *.frag,*.vert set filetype=glsl

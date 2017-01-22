@@ -7,10 +7,10 @@
 
 
 export HISTCONTROL=ignoreboth
-export HISTFILESIZE=9999
-export HISTIGNORE="ls:l:l -rt:cd:logout:exit:echo:"
+export HISTFILESIZE=100000000
+export HISTIGNORE="ls:l:l -rt:cd:logout:exit:"
 
-export CDPATH="~/dev"
+export CDPATH=".:~/dev"
 
 
 export LD_LIBRARY_PATH=/usr/local/lib64
@@ -22,7 +22,7 @@ function color_my_prompt {
     local __user_and_host="\[\033[0;32m\]\u\[\033[00m\]@\[\033[36m\]\h"
     local __cur_location="\[\033[01;36m\]\w"
     local __git_branch_color="\[\033[31m\]"
-    local __git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
+    local __git_branch='`git branch 2> /dev/null | grep ^* | sed -E s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
     local __prompt_tail="\[\033[35m\]$"
     local __last_color="\[\033[00m\]"
     export PS1="$__user_and_host $__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color "
@@ -32,9 +32,9 @@ color_my_prompt
 
 # ls aliases
 alias ls='ls --color=auto -F'
-alias ll='ls -CA'
 alias la='ls -a'
 alias l='ls -lha'
+alias grep='grep --color=auto'
 
 # OpenGL compilation
 alias gl++="g++ -lGL -lGLU -lglut -lGLEW" 
@@ -63,3 +63,6 @@ alias tmux='tmux -2'
 export PAGER='less -S -L'
 export EDITOR=vim
 export PATH
+
+export GWT_HOME=~/dev/sikkerhetsanalyse/gwt
+export SMARTGWT_HOME=~/dev/sikkerhetsanalyse/gwt
