@@ -183,15 +183,18 @@ setopt HIST_FIND_NO_DUPS
 
 #{{{ Prompt!
 
-host_color=green
+host_color=cyan
 history_color=yellow
-user_color=magenta
+user_color=green
 root_color=red
 directory_color=cyan
 error_color=red
 jobs_color=green
+post_color=magenta
 
-host_prompt="%{$fg_bold[$host_color]%}%m%{$reset_color%}"
+user_prompt="%{$fg[$user_color]%}%n%{$reset_color%}"
+
+host_prompt="%{$fg[$host_color]%}%m%{$reset_color%}"
 
 jobs_prompt1="%{$fg_bold[$jobs_color]%}(%{$reset_color%}"
 
@@ -225,17 +228,17 @@ case "$TERM" in
     directory_prompt=""
   ;;
   (*)
-    directory_prompt="%{$fg[$directory_color]%}%~%{$reset_color%} "
+    directory_prompt="%{$fg_bold[$directory_color]%}%~%{$reset_color%} "
   ;;
 esac
 
 if [[ $USER == root ]]; then
     post_prompt="%{$fg_bold[$root_color]%}%#%{$reset_color%}"
 else
-    post_prompt="%{$fg_bold[$user_color]%}\$%{$reset_color%}"
+    post_prompt="%{$fg_bold[$post_color]%}\$%{$reset_color%}"
 fi
 
-PS1="${host_prompt} ${jobs_total}${history_total} ${directory_prompt}${error_total}${post_prompt} "
+PS1="${user_prompt}@${host_prompt} ${jobs_total}${history_total} ${directory_prompt}${error_total}${post_prompt} "
 
 # Aliases
 alias ls="ls --color=auto"
