@@ -63,3 +63,9 @@ nnoremap <Tab> :MBEbn<CR>
 nnoremap <S-Tab> :MBEbp<CR>
 
 autocmd BufNewFile,BufRead *.frag,*.vert set filetype=glsl
+
+" Make Vim jump to the last position when reopening a file
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+        \| exe "normal! g'\"" | endif
+endif
