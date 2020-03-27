@@ -1,0 +1,15 @@
+alias hfv='cd ~/hfv/test_battery'
+alias grep='grep --color=auto -n'
+
+# ls aliases
+alias ls='ls --color=auto'
+alias la='ls -a'
+alias l='ls -lha'
+
+# git aliases
+alias gits='git status'
+alias gitc='git commit'
+alias gita='git add'
+alias gitd='git diff'
+alias gitr='git rebase'
+alias gitl='git log'

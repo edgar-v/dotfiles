@@ -1,29 +1,45 @@
-if [[ -f ~/.vimrc ]]; rm ~/.vimrc fi
-ln -s ~/dotfiles/.vimrc ~/.vimrc
+#!/bin/bash
 
-if [[ -d ~/.fehbg ]]; rm -r ~/.fehbg fi
-ln -s ~/dotfiles/.fehbg ~/.fehbg
+#if [[ -d ~/.ssh && -f ~/.ssh/config ]]; rm ~/.ssh/config fi
+#ln -s ~/dotfiles/.ssh/config ~/.ssh/config
 
-if [[ -f ~/.bashrc ]]; rm ~/.bashrc fi
-ln -s ~/dotfiles/.bashrc ~/.bashrc
+declare -A FILES=(
+	[.vimrc]=~/.vimrc
+	[.bashrc]=~/.bashrc
+	[.zshrc]=~/.zshrc
+	[.aliases]=~/.aliases
+	[.profile]=~/.profile
+	[.Xresources]=~/.Xresources
+	[.ssh/config]=~/.ssh/config
+	[.vim]=~/.vim
+	[i3/]=~/.config/i3
+	[.zsh/]=~/.zsh
+)
 
-if [[ -f ~/.profile ]]; rm ~/.profile fi
-ln -s ~/dotfiles/.profile ~/.profile
-
-if [[ -f ~/.Xresources ]]; rm ~/.Xresources fi
-ln -s ~/dotfiles/.Xresources ~/.Xresources
-
-if [[ -d ~/.vim ]]; rm -r ~/.vim fi
-ln -s ~/dotfiles/.vim ~/.vim
-
-if [[ -d ~/.ssh && -f ~/.ssh/config ]]; rm ~/.ssh/config fi
-ln -s ~/dotfiles/.ssh/config ~/.ssh/config
-
-if [[ -d ~/.ncmpcpp ]]; rm -r ~/.ncmpcpp fi
-ln -s ~/dotfiles/.ncmpcpp ~/.ncmpcpp
-
-if [[ -f ~/.zshrc ]]; rm ~/.zshrc fi
-ln -s ~/dotfiles/.zshrc ~/.zshrc
-
-if [[ -d ~/.config/i3 ]]; rm -r ~/.config/i3 fi
-ln -s ~/dotfiles/i3 ~/.config/i3
+for key in "${!FILES[@]}"; do
+	if [[ -h ${FILES[$key]} && $(readlink ${FILES[$key]}) == "$(pwd)/$key" ]]; then
+		echo "${FILES[$key]} already linked, skipping"
+		continue
+	fi
+	if [[ -f ${FILES[$key]} || -d ${FILES[$key]} ]]; then
+		echo "${FILES[$key]} already exists."
+		while true
+		do
+			read -p "Replace? (Y/N): " answer
+			case $answer in
+				[yY]* )
+					rm -r "${FILES[$key]}"
+					ln -s "$(pwd)/$key" "${FILES[$key]}"
+					break;;
+				[nN]* )
+					echo "Ok, skipping ${FILES[$key]}"
+					break;;
+			esac
+		done
+		continue
+	fi
+	echo "Linking ${FILES[$key]}"
+	ln -s "$(pwd)/$key" "${FILES[$key]}"
+    echo $(pwd)/$key
+    echo ${FILES[$key]}
+done

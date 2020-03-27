@@ -1,3 +1,5 @@
+fpath=(~/.zsh/completion $fpath)
+
 autoload -U compinit promptinit zcalc zsh-mime-setup
 compinit
 promptinit
@@ -9,7 +11,6 @@ setopt IGNORE_EOF NO_FLOW_CONTROL NO_BEEP NUMERIC_GLOB_SORT EXTENDED_GLOB
 setopt RC_EXPAND_PARAM
 
 export EDITOR="vim"
-
 export PAGER='less -S -L'
 
 man() {
@@ -53,7 +54,7 @@ zstyle ':completion:*:default' menu 'select=0'
 zstyle ':completion:*' file-sort modification reverse
 
 # color code completion!!!!  Wohoo!
-zstyle ':completion:*' list-colors "=(#b) #([0-9]#)*=36=31"
+zstyle ':completion:*' list-colors "=*=36"
 
 unsetopt LIST_AMBIGUOUS
 setopt  COMPLETE_IN_WORD
@@ -62,7 +63,6 @@ setopt  COMPLETE_IN_WORD
 zstyle ':completion:*:manuals' separate-sections true
 
 # Egomaniac!
-zstyle ':completion:*' list-separator 'fREW'
 
 # complete with a menu for xwindow ids
 zstyle ':completion:*:windows' menu on=0
@@ -240,41 +240,9 @@ fi
 
 PS1="${user_prompt}@${host_prompt} ${jobs_total}${history_total} ${directory_prompt}${error_total}${post_prompt} "
 
-# Aliases
-alias ls="ls --color=auto"
-alias grep="grep --color=auto"
-
-
-#if [[ $TERM == screen]; then
-     #function precmd() {
-          #print -Pn "\033]0;S $TTY:t{%100<...<%~%<<}\007"
-             #}
-#elsif [[ $TERM == linux ]]; then
-    #precmd () { print -Pn "\e]0;%m: %~\a" }
-#fi
-
-#}}}
+source ~/.aliases
 
 #{{{ Functions
-
-#function vi {
-        #LIMIT=$#
-        #for ((i = 1; i <= $LIMIT; i++ )) do
-                #eval file="\$$i"
-                #if [[ -e $file && ! -O $file ]]
-                #then
-                        #otherfile=1
-                #else
-
-                #fi
-        #done
-        #if [[ $otherfile = 1 ]]
-        #then
-                #command sudo vi "$@"
-        #else
-                #command vi "$@"
-        #fi
-#}
 
 _force_rehash() {
   (( CURRENT == 1 )) && rehash
@@ -286,17 +254,6 @@ edit-command-output() {
  CURSOR=0
 }
 zle -N edit-command-output
-
-#}}}
-
-#{{{ Testing... Testing...
-#exec 2>>(while read line; do
-#print '\e[91m'${(q)line}'\e[0m' > /dev/tty; done &)
-
-watch=(notme)
-LOGCHECK=0
-
-#}}}
 
 #{{{ ZSH Modules
 

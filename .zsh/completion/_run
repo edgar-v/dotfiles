@@ -1,0 +1,74 @@
+#compdef run
+
+DUTS=(
+    GLUON
+    PHOTON
+    MESON
+    QUARK_FP1
+    HADRON
+    GRAVITON
+    YODA_NETWORK
+    YODA_APPLICATION
+    LILIUM_PROTO2
+    HALTIUM
+)
+
+_tests() {
+    if [[ "${words[2]}" =~ "(fw_prod|fw_lab)" ]]; then
+        _path_files -/ -W "/home/edve/hfv/test_battery/DUT/modules/${words[2]}/" -F "*/c"
+    elif [ -d ~/hfv/test_battery/DUT/modules/${words[2]} ]; then
+        compadd $(ls ~/hfv/test_battery/DUT/modules/${words[2]}/ \
+                | grep -oE "([a-z]{1,2})?[0-9]{3,4}.*")
+    fi
+}
+
+_modules() {
+    compadd $(ls ~/hfv/test_battery/DUT/modules)
+}
+
+_variants() {
+    compadd $(ls ~/hfv/test_battery/DUT/variants)
+}
+
+_target_configs() {
+    for inifile in $(cd ~/hfv/test_battery/DUT/modules/${words[2]}/${words[3]}; find . -name deliver.ini); do
+        inipath=${inifile%/deliver.ini}
+        inipath=${inipath#./}
+        compadd $(grep -E "\[[^]]+\]" ~/hfv/test_battery/DUT/modules/${words[2]}/${words[3]}/$inifile \
+                | tr -d '[]' \
+                | sed "s/^/${inipath}\//")
+    done
+}
+
+_run() {
+    integer ret=1
+    local -a args
+    args+=(
+        '(-c --current)'{-c,--current}'[Enable current consumption HW]' 
+        '(-d --debug)'{-d,--debug}'[Set DEBUG_PRINT=1]'
+        '*-D[Set additional defines]:define'
+        "--dut[Select DUT to compile for]:dut:(${DUTS[*]})"
+        '(-h --high-voltage)'{-h,--high-voltage}'[Enable high voltage mode]'
+        '(-i --iterations)'{-i,--iterations}'[Number of times to run test]:# of iterations'
+        '(-j --jlink)'{-j,--jlink}'[What jlink to use (default mini)]:jlink:(mini base)'
+        '(-l --logic-analyzer)'{-l,--logic-analyzer}'[Capture data on logic analyzer]'
+        '(-n --nfct)'{-n,--nfct}'[Enable NFCTPHY]'
+        '(-p --pretty)'{-p,--pretty}'[Enable pretty printing]'
+        '--print-command[Print the command to be run, then exit]'
+        '(-q --qspi)'{-q,--qspi}'[Enable QSPIBOARD]'
+        '(-r --rf)'{-r,--rf}'[Enable GENERICRF]'
+        "--target-config[Target config to use for FW]:target_conf:_target_configs"
+        '(-t --timeout)'{-t,--timeout}'[Speciy test timeout duration]:timeout'
+        '(-v --verbose)'{-v,--verbose}'[Verbose scons output]'
+        "--variant[Specify test variant]:variant:_variants"
+        '(-w --workaround)'{-w,--workaround}'[Enable TEST_WORKAROUND=1]'
+        '(-u --usb)'{-u,--usb}'[Enable MAXUSBHOST]'
+        "1:module:_modules"
+        "2:test:_tests"
+    )
+
+    _arguments $args[@] && ret=0
+    return ret
+}
+
+_run "$@"
