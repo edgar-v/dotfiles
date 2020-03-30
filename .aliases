@@ -1,5 +1,5 @@
 alias hfv='cd ~/hfv/test_battery'
-alias grep='grep --color=auto -n'
+alias grep='grep --color=auto --exclude="tags" -n'
 
 # ls aliases
 alias ls='ls --color=auto'

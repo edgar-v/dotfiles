@@ -27,3 +27,7 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+
+if [ -f "$HOME/bin/ssh-add_on_first_login.sh" ]; then
+    . "$HOME/bin/ssh-add_on_first_login.sh"
+fi
