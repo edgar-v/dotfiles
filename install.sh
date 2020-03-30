@@ -14,6 +14,7 @@ declare -A FILES=(
     [.ssh/config]=~/.ssh/config
     [.vim]=~/.vim
     [i3/]=~/.config/i3
+    [rofi/]=~/.config/rofi
     [.zsh/]=~/.zsh
 )
 
