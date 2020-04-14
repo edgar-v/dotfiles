@@ -1,0 +1,33 @@
+#compdef edit
+
+_tests() {
+    if [[ "${words[2]}" =~ "(fw_prod|fw_lab)" ]]; then
+        _path_files -/ -W "/home/edve/hfv/test_battery/DUT/modules/${words[2]}/" -F "*/c"
+    elif [ -d ~/hfv/test_battery/DUT/modules/${words[2]} ]; then
+        compadd $(ls ~/hfv/test_battery/DUT/modules/${words[2]}/ \
+                | grep -oE "([a-z]{1,2})?[0-9]{3,4}.*")
+    fi
+}
+
+_modules() {
+    compadd $(ls ~/hfv/test_battery/DUT/modules)
+}
+
+_test_files() {
+    _path_files -W "/home/edve/hfv/test_battery/DUT/modules/${words[2]}/${words[2]}_tst_${words[3]}"
+}
+
+_edit() {
+    integer ret=1
+    local -a args
+    args+=(
+        "1:module:_modules"
+        "2:test:_tests"
+        "3:files:_test_files"
+    )
+
+    _arguments $args[@] && ret=0
+    return ret
+}
+
+_run "$@"

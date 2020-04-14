@@ -55,6 +55,7 @@ set foldlevel=99
 
 
 autocmd BufNewFile,BufRead *SCons* set filetype=scons
+autocmd BufNewFile,BufRead *.xel set filetype=tcl
 autocmd BufNewFile,BufRead *.frag,*.vert set filetype=glsl
 
 " Make Vim jump to the last position when reopening a file

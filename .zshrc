@@ -1,10 +1,10 @@
 fpath=(~/.zsh/completion $fpath)
 
-autoload -U compinit promptinit zcalc zsh-mime-setup
+autoload -U compinit promptinit zcalc zsh-mime-setup colors
 compinit
 promptinit
 zsh-mime-setup
-
+colors
 
 setopt AUTO_CD MULTIOS CORRECT AUTO_PUSHD AUTO_NAME_DIRS GLOB_COMPLETE
 setopt IGNORE_EOF NO_FLOW_CONTROL NO_BEEP NUMERIC_GLOB_SORT EXTENDED_GLOB
@@ -23,9 +23,6 @@ man() {
     LESS_TERMCAP_us=$'\E[04;38;5;15m' \
     man "$@"
 }
-
-
-
 
 # Faster! (?)
 zstyle ':completion::complete:*' use-cache 1
@@ -196,22 +193,6 @@ user_prompt="%{$fg[$user_color]%}%n%{$reset_color%}"
 
 host_prompt="%{$fg[$host_color]%}%m%{$reset_color%}"
 
-jobs_prompt1="%{$fg_bold[$jobs_color]%}(%{$reset_color%}"
-
-jobs_prompt2="%{$fg[$jobs_color]%}%j%{$reset_color%}"
-
-jobs_prompt3="%{$fg_bold[$jobs_color]%})%{$reset_color%}"
-
-jobs_total="%(1j.${jobs_prompt1}${jobs_prompt2}${jobs_prompt3} .)"
-
-history_prompt1="%{$fg_bold[$history_color]%}[%{$reset_color%}"
-
-history_prompt2="%{$fg[$history_color]%}%h%{$reset_color%}"
-
-history_prompt3="%{$fg_bold[$history_color]%}]%{$reset_color%}"
-
-history_total="${history_prompt1}${history_prompt2}${history_prompt3}"
-
 error_prompt1="%{$fg_bold[$error_color]%}<%{$reset_color%}"
 
 error_prompt2="%{$fg[$error_color]%}%?%{$reset_color%}"
@@ -232,15 +213,21 @@ case "$TERM" in
   ;;
 esac
 
+
 if [[ $USER == root ]]; then
     post_prompt="%{$fg_bold[$root_color]%}%#%{$reset_color%}"
 else
     post_prompt="%{$fg_bold[$post_color]%}\$%{$reset_color%}"
 fi
 
-PS1="${user_prompt}@${host_prompt} ${jobs_total}${history_total} ${directory_prompt}${error_total}${post_prompt} "
+PS1="${user_prompt}@${host_prompt} ${directory_prompt}${error_total}${post_prompt} "
 
 source ~/.aliases
+
+if [ -f "$HOME/bin/ssh-add_on_first_login.sh" ]; then
+    . "$HOME/bin/ssh-add_on_first_login.sh"
+fi
+
 
 #{{{ Functions
 
@@ -261,6 +248,5 @@ autoload -U compinit promptinit zcalc zsh-mime-setup colors
 compinit
 promptinit
 zsh-mime-setup
-colors
 
 #}}}
